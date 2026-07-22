@@ -1,0 +1,11 @@
+{
+  "tokenSetOrder": [
+    "global",
+    "Primitive tokens/Mode 1",
+    "Semantic tokens/Mode 1",
+    "primitive/Mode 1",
+    "semantic/Mode 1",
+    "responsive/pc",
+    "responsive/mobile"
+  ]
+}

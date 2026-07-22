@@ -1,0 +1,106 @@
+@import '../styles/tokens.css';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@source not "../.claude";
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   shadcn 변수 → 디자인 시스템 토큰 매핑
+   모든 값은 styles/tokens.css에서 생성된 CSS 변수를 참조
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ===== shadcn bridge mapping ===== */
+  /* shadcn 기본 토큰 → 11c 커스텀 토큰 연결 */
+
+  --background:               var(--color-background-normal);
+  --foreground:               var(--color-label-normal);
+
+  --card:                     var(--color-background-normal);
+  --card-foreground:          var(--color-label-normal);
+
+  --popover:                  var(--color-background-normal);
+  --popover-foreground:       var(--color-label-normal);
+
+  --primary:                  var(--color-theme-dependent-primary);
+  --primary-foreground:       var(--color-label-inverse);
+
+  --secondary:                var(--color-theme-secondary);
+  --secondary-foreground:     var(--color-label-neutral);
+
+  --muted:                    var(--color-background-alternative);
+  --muted-foreground:         var(--color-label-alternative);
+
+  --accent:                   var(--color-background-alternative);
+  --accent-foreground:        var(--color-label-normal);
+
+  --destructive:              var(--color-theme-danger);
+  --destructive-foreground:   var(--color-label-inverse);
+
+  --border:                   var(--color-border-normal);
+  --input:                    var(--color-border-normal);
+  --ring:                     var(--color-border-primary);
+
+  --radius:                   var(--radius-300);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Tailwind v4 @theme — shadcn 변수를 Tailwind 색상 유틸리티로 노출
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@theme inline {
+  --font-sans: var(--font-family-font-sans-default);
+  /* 나머지 기존 내용 유지 */
+
+  --color-background:             var(--background);
+  --color-foreground:             var(--foreground);
+
+  --color-card:                   var(--card);
+  --color-card-foreground:        var(--card-foreground);
+
+  --color-popover:                var(--popover);
+  --color-popover-foreground:     var(--popover-foreground);
+
+  --color-primary:                var(--primary);
+  --color-primary-foreground:     var(--primary-foreground);
+
+  --color-secondary:              var(--secondary);
+  --color-secondary-foreground:   var(--secondary-foreground);
+
+  --color-muted:                  var(--muted);
+  --color-muted-foreground:       var(--muted-foreground);
+
+  --color-accent:                 var(--accent);
+  --color-accent-foreground:      var(--accent-foreground);
+
+  --color-destructive:            var(--destructive);
+
+  --color-border:                 var(--border);
+  --color-input:                  var(--input);
+  --color-ring:                   var(--ring);
+
+  /* radius 스케일 — --radius(0.5rem = 8px) 기준 */
+  --radius-sm:  calc(var(--radius) * 0.5);   /* 4px  = radius-radius-100 */
+  --radius-md:  calc(var(--radius) * 0.75);  /* 6px  = radius-radius-200 */
+  --radius-lg:  var(--radius);               /* 8px  = radius-radius-300 */
+  --radius-xl:  calc(var(--radius) * 1.5);   /* 12px = radius-radius-400 */
+  --radius-2xl: calc(var(--radius) * 2);     /* 16px = radius-radius-500 */
+  --radius-3xl: calc(var(--radius) * 2.5);   /* 20px = radius-radius-600 */
+  --radius-4xl: calc(var(--radius) * 3);     /* 24px = radius-radius-700 */
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in oklch, var(--color-ring) 50%, transparent);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+  html {
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+}
+}
